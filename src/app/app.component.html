@@ -1,0 +1,65 @@
+<h1>Week 11 - Example</h1>
+<app-child-component [college] = "college_name" [city] = "city"></app-child-component>
+
+<br>
+
+<h2>Pipes Example</h2>
+<p>{{123456 | number}}</p>
+<p>{{"Thanh" | greet}}</p>
+<!-- <p>{{"Thanh" | fullname:'Mr.'}}</p> -->
+<p>{{"Thanh" | fullname:"Mr.":"Duong"}}</p>
+<p>{{5 | power:2}}</p>
+<p>{{5 | square}}</p>
+
+<h2>*ngIf and *ngSwitch</h2>
+<div *ngIf="isDisplay">
+    This is Visible
+</div>
+
+<ng-template #trueTemplate>
+    <h2>I will be visible when TRUE</h2>
+</ng-template>
+
+<ng-template #falseTemplate>
+    <h3>I wil be visible when FALSE</h3>
+</ng-template>
+
+<div *ngIf="isDisplay then trueTemplate else falseTemplate"></div>
+
+<h1 [hidden]="true">
+    ngStyle
+</h1>
+
+<div [ngStyle]="{'color':'red'}">
+    I will be RED
+</div>
+
+<div [ngSwitch] = "city">
+    <h3 *ngSwitchCase="'Toronto'">
+        {{city}} - Capital City of Ontario
+    </h3>
+    <h3 *ngSwitchCase="'Edmonton'">
+        {{city}} - Capital City of Alberta
+    </h3>
+    <h3 *ngSwitchCase="'New York'">
+        {{city}} - Capital City of USA
+    </h3>
+    <h3 *ngSwitchCase="'London'">
+        {{city}} - Capital City of UK
+    </h3>
+    <h4 *ngSwitchDefault>Not a valid city</h4>
+</div>
+
+<h2>Custom Directive Example</h2>
+<h3 appCustom>I am custome directive content</h3>
+
+<button (click) = "btnGetUserClick()">Get User Data</button>
+<button (click) = "btnUserDataById()">Get User By ID</button>
+<br>
+{{user?.data?.first_name}}
+<img [src]="user?.data?.avatar"/>
+
+<app-heros></app-heros>
+
+<label for="inputFormat">Add Something</label>
+<input type="text" name="inputFormat" appInputFormat/>
